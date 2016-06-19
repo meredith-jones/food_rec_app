@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %> yes sir</title>
+</head>
+<body>
+
+<h1>Main page</h1>
+<h2>This is cool</h2>
+Your latitude is <span id="startLat"></span><br>
+Your longitude is <span id="startLon"></span><br>
+What would you lke to find? <input type="text" name="queryparam">
+<button onclick="getResults()">Submit</button>
+
+<div id="demo"></div>
+</body>
+<script> 
+window.onload = function() {
+  var startPos;
+  var geoOptions = {
+    timeout: 10 * 1000
+  }
+
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  var geoError = function(error) {
+    console.log('Error occurred. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from location provider)
+    //   3: timed out
+  };
+
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+};
+
+function getResults(){
+var queryparam =document.getElementsByName("queryparam")[0].value;
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (xhttp.readyState == 4 && xhttp.status == 200) {
+  	populateRestaurants(JSON.parse(xhttp.responseText));
+  }
+};
+
+function populateRestaurants(allrest){
+	var populateQuestions = "";
+
+	for (var i = 0; i < allrest.results.length; i++){
+		console.log("i is:"+i);
+	    populateQuestions += '<div class="restaurant"> Restaurant' + (i+1) + ": "+ allrest.results[i].name + '<ul class="attributes">';
+	    populateQuestions += '<li>price: '+allrest.results[i].price_level+'</li>';
+	    populateQuestions += '<li>rating: '+allrest.results[i].rating+'</li>';
+	    populateQuestions += '<li>vicinity: '+allrest.results[i].vicinity+'</li>';
+	    populateQuestions +="</ul></div><br>";
+	}
+	document.getElementById("demo").innerHTML = populateQuestions;
+	console.log("done");
+}
+
+
+
+xhttp.open("GET", "/testme/?queryparam="+queryparam, true);
+xhttp.send();
+
+}
+
+</script>
+
+</html>
+
+
+
+
+
+
+
