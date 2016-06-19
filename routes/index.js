@@ -5,45 +5,47 @@ var https = require("https");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'What are we going to do now' });
+    res.render('index', {
+        title: 'What are we going to do now'
+    });
 });
 
 router.get('/quiz', function(req, res, next) {
-  res.sendFile(path.join(__dirname+'/../views/quiz.html'));
+    res.sendFile(path.join(__dirname + '/../views/quiz.html'));
 });
 
 router.get('/dog/', function(req, res) {
-   
+
 });
 
 router.get('/testme/', function(req, res, next) {
 
-	var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.598748,-122.388726&radius=1000&keyword="+req.query.queryparam+"&key=AIzaSyBURdJOkG62jXYReG_GIyHwOvWo9YIxG28";
-	https.get(url, function (response) {
-	    // data is streamed in chunks from the server
-	    // so we have to handle the "data" event    
-	    var buffer = "", 
-	        data,
-	        route;
+    var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.598748,-122.388726&radius=1000&keyword=" + req.query.queryparam + "&key=AIzaSyBURdJOkG62jXYReG_GIyHwOvWo9YIxG28";
+    https.get(url, function(response) {
+        // data is streamed in chunks from the server
+        // so we have to handle the "data" event
+        var buffer = "",
+            data,
+            route;
 
-	    response.on("data", function (chunk) {
-	        buffer += chunk;
-	    }); 
+        response.on("data", function(chunk) {
+            buffer += chunk;
+        });
 
-	    response.on("end", function (err) {
-	        // finished transferring data
-	        // dump the raw data
-	        //console.log(buffer);
-	        console.log("got buffer \n");
-	        data = JSON.parse(buffer);
-	       
+        response.on("end", function(err) {
+            // finished transferring data
+            // dump the raw data
+            //console.log(buffer);
+            console.log("got buffer \n");
+            data = JSON.parse(buffer);
 
-	        // extract the distance and time
-	       // console.log("Walking Distance: " + route.legs[0].distance.text);
-	       // console.log("Time: " + route.legs[0].duration.text);
-        	res.send(buffer);
-	    }); 
-	}); 
+
+            // extract the distance and time
+            // console.log("Walking Distance: " + route.legs[0].distance.text);
+            // console.log("Time: " + route.legs[0].duration.text);
+            res.send(buffer);
+        });
+    });
 
 
 });
