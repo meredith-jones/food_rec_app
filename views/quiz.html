@@ -71,108 +71,9 @@
 
 <h1>Which Jungle Book character are you?</h1>
 <h2>Take this quiz and find out!</h2>
-<div class="question">
-Question 1: When waking up do you:
-	<ul class="choices">
-		<input type="radio" class="balooClass"> hit the snooze button before regaining consciousness<br/>
-		<input type="radio" class="mowgliClass"> look around and wonder where you are<br/>
-		<input type="radio" class="bagheeraClass"> jump out of bed<br/>
-		<input type="radio" class="kingLouieClass"> check facebook<br/>
-	</ul>
-</div>
-<br>
 
-<div class="question">
-Question 2: When choosing a snack, your go-to is:
-	<ul class="choices">
-		<input type="radio" class="colHathiClass"> something nutty<br/>
-		<input type="radio" class="kingLouieClass"> something sweet<br/>
-		<input type="radio" class ="kaaClass"> something salty<br/>
-		<input type="radio" class="shereKhanClass"> MEAT<br/>
-	</ul>
-</div>
-<br>
-<div class="question">
-Question 3: What is your favorite part of work?
-	<ul class="choices">
-		<input type="radio" class="balooClass"> 5 o'clock<br/>
-		<input type="radio" class="shereKhanClass"> the meetings<br/>
-		<input type="radio" class="kingLouieClass"> the part where you get a paycheck<br/>
-		<input type="radio" class ="kaaClass"> spreadsheets<br/>
-	</ul>
-</div>
-<br>
-<div class="question">
-Question 4: What do you do for fun?
-	<ul class="choices">
-		<input type="radio" class="colHathiClass"> take quizzes such as this<br/>
-		<input type="radio" class="balooClass"> anything outside<br/>
-		<input type="radio" class="mowgliClass"> something creative<br/>
-		<input type="radio" class="bagheeraClass"> video games<br/>
-	</ul>
-</div>
-<br>
-<div class="question">
-Question 5: When in the shower do you...
-	<ul class="choices">
-		<input type="radio" class="shereKhanClass"> get in, get out... let's not waste time and water<br/>
-		<input type="radio" class="balooClass"> take your sweet time. It is so relaxing!!<br/>
-		<input type="radio" class="mowgliClass"> I don't shower<br/>
-		<input type="radio" class="colHathiClass"> I shower, but I don't dry off.<br/>
-	</ul>
-</div>
-<br>
-<div class="question">
-Question 6: When observing people...
-	<ul class="choices">
-		<input type="radio" class="bagheeraClass"> I notice how they interact with other people<br/>
-		<input type="radio" class="kingLouieClass"> I notice what they are wearing<br/>
-		<input type="radio" class ="kaaClass"> I notice how attractive they are<br/>
-		<input type="radio" class="colHathiClass"> I don't really notice other people<br/>
-	</ul>
-</div>
-<br>
-<div class="question">
-Question 7: Your favorite dessert is:
-	<ul class="choices">
-		<input type="radio" class="kingLouieClass"> ice cream<br/>
-		<input type="radio" class="bagheeraClass"> MEAT<br/>
-		<input type="radio" class="mowgliClass"> chocolate<br/>
-		<input type="radio" class="balooClass"> candy<br/>
-	</ul>
-</div>
-<br>
-<div class="question">
-Question 8: If you were elected president:
-	<ul class="choices">
-		<input type="radio" class="balooClass"> free college for everyone<br/>
-		<input type="radio" class="shereKhanClass"> people should get what they work for<br/>
-		<input type="radio" class="mowgliClass"> I'd respectfully decline the election<br/>
-		<input type="radio" class="bagheeraClass"> First priority: let's pay teachers more.<br/>
-	</ul>
-</div>
-<br>
-<div class="question">
-Question 9: Your dance style:
-	<ul class="choices">
-		<input type="radio" class="balooClass"> Freestyle! I just move with the music.<br/>
-		<input type="radio" class="mowgliClass"> Solo and structured - ballet, tap, jazz, something with steps<br/>
-		<input type="radio" class="colHathiClass"> Ballroom - structured and with a partner<br/>
-		<input type="radio" class="kingLouieClass"> West Coast or Lindy - with a partner, but less structured<br/>
-	</ul>
-</div> 
-<br>
-<div class="question">
-Question 10 - Final Question: Your karaoke style:
-	<ul class="choices">
-		<input type="radio" class="kingLouieClass"> I only karaoke drunk.<br/>
-		<input type="radio" class ="kaaClass"> I take my performance very seriously.<br/>
-		<input type="radio" class="mowgliClass"> I don't karaoke, but I will spectate.<br/>
-		<input type="radio" class="shereKhanClass"> I don't karaoke, and I'll pay you to stop singing.<br/>
-	</ul>
-</div>
+<div id="questionList"></div>
 
-<br>
 <button onclick="getResults()">Submit</button>
 <br>
 <div class="results">
@@ -183,6 +84,120 @@ Question 10 - Final Question: Your karaoke style:
 
 </body>
 <script>
+var QuestionArray = 
+[
+{
+    "question" : "When waking up do you",
+    "userResponse" : -1,
+    "options" : [ 
+    ["hit the snooze button before regaining consciousness","baloo"],
+    ["look around and wonder where you are","mowgli"],
+    ["jump out of bed","bagheera"],
+    ["check facebook","kingLouie"]
+    ]
+    
+}
+,
+{
+    "question" : "When choosing a snack, your go-to is",
+    "userResponse" : -1,
+    "options" : [
+["something nutty","colHathi"],
+["something sweet","kingLouie"],
+["something salty","kaa"],
+["MEAT","shereKhan"]
+    ]
+    
+},
+{
+    "question" : "What is your favorite part of work?",
+    "userResponse" : -1,
+    "options" : [
+["5 o'clock","baloo"],
+["the meetings","shereKhan"],
+["the part where you get a paycheck","kingLouie"],
+["spreadsheets","kaa"]
+    ]
+    
+},
+{
+    "question" : "What do you do for fun?",
+    "userResponse" : -1,
+    "options" : [
+["take quizzes such as this","colHathi"],
+["anything outside","baloo"],
+["something creative","mowgli"],
+["video games","bagheera"]
+    ]
+    
+},
+{
+    "question" : "When in the shower do you...",
+    "userResponse" : -1,
+    "options" : [
+["get in, get out... let's not waste time and water","shereKhan"],
+["take your sweet time. It is so relaxing!!","baloo"],
+["I don't shower","mowgli"],
+["I shower, but I don't dry off.","colHathi"]
+    ]
+    
+},
+{
+    "question" : "When observing people...",
+    "userResponse" : -1,
+    "options" : [
+["I notice how they interact with other people","bagheera"],
+["I notice what they are wearing","kingLouie"],
+["I notice how attractive they are","kaa"],
+["I don't really notice other people","colHathi"]
+    ]
+    
+},
+{
+    "question" : "Your favorite dessert is",
+    "userResponse" : -1,
+    "options" : [
+ ["ice cream","kingLouie"],
+["MEAT","bagheera"],
+["chocolate","mowgli"],
+["candy","baloo"]
+    ]
+    
+},
+{
+    "question" : "If you were elected president",
+    "userResponse" : -1,
+    "options" : [
+["free college for everyone","baloo"],
+["people should get what they work for","shereKhan"],
+["I'd respectfully decline the election","mowgli"],
+["First priority: let's pay teachers more.","bagheera"]
+    ]
+    
+},
+{
+    "question" : "Your dance style",
+    "userResponse" : -1,
+    "options" : [
+["Freestyle! I just move with the music.","baloo"],
+["Solo and structured - ballet, tap, jazz, something with steps","mowgli"],
+["Ballroom - structured and with a partner","colHathi"],
+["West Coast or Lindy - with a partner, but less structured","kingLouie"]
+    ]
+    
+},
+{
+    "question" : "Final Question Your karaoke style",
+    "userResponse" : -1,
+    "options" : [
+["I only karaoke drunk.","kingLouie"],
+["I take my performance very seriously.","kaa"],
+["I don't karaoke, but I will spectate.","mowgli"],
+["I don't karaoke, and I'll pay you to stop singing.","shereKhan"]
+    ]
+    
+}
+];
 
 var charData = [
 	{name: "Mowgli", score: 0, description: "You are Mowgli the Man Child. You are fearless, determined, and carefree. You love to have fun, although your naiveity can get you into trouble at times."}, //0
@@ -194,107 +209,54 @@ var charData = [
 	{name: "King Louie", score: 0, description: "You are King Louie the Monkey. You are funny, rowdy, and always into mischief. You can be greedy at times, and are known to bust out into song and dance at other times."} //6
 ];
 
-	/* when user clicks an answer, +1 to the character to which the answer is correlated.
-	*/
-var radioMowgli = document.getElementsByClassName('mowgliClass');
-var radioKaa = document.getElementsByClassName('kaaClass');
-var radioShereKhan = document.getElementsByClassName('shereKhanClass');
-var radioBagheera = document.getElementsByClassName('bagheeraClass');
-var radioBaloo = document.getElementsByClassName('balooClass');
-var radioColonelHathi = document.getElementsByClassName('colHathiClass');
-var radioKingLouie = document.getElementsByClassName('kingLouieClass');
 
-for(var i = 0; i < radioMowgli.length; i++){
-	radioMowgli[i].onclick = function(){
-		this.parentElement.parentElement.style.visibility="hidden";
-		//this.parentElement.parentElement.remove();
-		// style="visibility:hidden"
-			//mowgli += 1;
-			charData[0].score += 1;
-		//alert("mowgli:" + charData[0].score);
+// Populate Questions in HTML
 
+
+var populateQuestions = "";
+for (i = 0; i < QuestionArray.length; i++){
+    populateQuestions += '<div class="question"> Question' + (i+1) + ": "+ QuestionArray[i].question + '<ul class="choices">';
+    
+    for (j=0; j < QuestionArray[i].options.length; j++) {
+        populateQuestions += '<input type="radio" name="q'+ i +'" value="' + QuestionArray[i].options[j][1] +'">' + QuestionArray[i].options[j][0] + '<br>';
+    }
+    
+    populateQuestions +="</ul></div><br>";
+}
+
+document.getElementById("questionList").innerHTML = populateQuestions;
+
+
+
+/* Set Listener */
+var allradios = document.getElementsByTagName('input');
+
+//TODO: Need to write function to remove non radio inputs
+
+for(var i = 0; i < allradios.length; i++){
+	allradios[i].onclick = function(){
+		var idx =parseInt(this.name.substring(1));	
+		QuestionArray[idx].userResponse = this.value;
+		console.log(idx + " " + QuestionArray[idx].userResponse);
 	}
-}
-	for(var i = 0; i < radioKaa.length; i++){
-	radioKaa[i].onclick = function(){
-		this.parentElement.parentElement.style.visibility="hidden";
-		//this.parentElement.parentElement.remove();
-		// style="visibility:hidden"
-			charData[1].score += 1;
-		//alert("kaa:" + charData[1].score);
 
-	}
-}
-	for(var i = 0; i < radioShereKhan.length; i++){
-	radioShereKhan[i].onclick = function(){
-		this.parentElement.parentElement.style.visibility="hidden";
-		//this.parentElement.parentElement.remove();
-		// style="visibility:hidden"
-			charData[2].score += 1;
-		//alert("Shere Khan:" + charData[2].score);
-
-	}
-}
-	for(var i = 0; i < radioBagheera.length; i++){
-	radioBagheera[i].onclick = function(){
-		this.parentElement.parentElement.style.visibility="hidden";
-		//this.parentElement.parentElement.remove();
-		// style="visibility:hidden"
-			charData[3].score += 1;
-		//alert("bagheera:" + charData[3].score);
-
-	}
-}
-	for(var i = 0; i < radioBaloo.length; i++){
-	radioBaloo[i].onclick = function(){
-		this.parentElement.parentElement.style.visibility="hidden";
-		//this.parentElement.parentElement.remove();
-		// style="visibility:hidden"
-			charData[4].score += 1;
-		//alert("baloo:" + charData[4].score);
-
-	}
-}
-	for(var i = 0; i < radioColonelHathi.length; i++){
-	radioColonelHathi[i].onclick = function(){
-		this.parentElement.parentElement.style.visibility="hidden";
-		//this.parentElement.parentElement.remove();
-		// style="visibility:hidden"
-			charData[5].score += 1;
-		//alert("Colonel Hathi:" + charData[5].score);
-
-	}
-}
-	for(var i = 0; i < radioKingLouie.length; i++){
-	radioKingLouie[i].onclick = function(){
-		this.parentElement.parentElement.style.visibility="hidden";
-		//this.parentElement.parentElement.remove();
-		// style="visibility:hidden"
-			charData[6].score += 1;
-		//alert("King Louie:" + charData[6].score);
-
-	}
 }
 
-//scroll function
-document.getElementsByTagName('radio')[0].onclick = function(){
-	scrollTo(document.body, 0, 1250);
-}
-function scrollTo(element, to, duration){
-	var start = element.scrollTop,
-		change = to - start,
-		increment = 20;
-
-	var animateScroll = function(elapsedTime){
-		elapsedTime += increment;
-		var position = easeInOut(elapsedTime, start, change, duration);
-	}
-}
 
 
 function getResults(){
 
 	function findHighScore(){
+		for ( var i = 0; i < QuestionArray.length; i ++){
+				for (var j = 0; j < charData.length; j++) {
+					if (QuestionArray[i].userResponse.toLowerCase() == charData[j].name.toLowerCase()){
+						charData[j].score += 1;
+						console.log("charData[j].score");
+					}
+					console.log(QuestionArray[i].userResponse + charData[0].name);
+				}
+
+		}
 		var highScore = 0;
 		var result;
 			for(var i = 0; i < charData.length; i++){
@@ -303,12 +265,13 @@ function getResults(){
 					highScore = charData[i].score;
 				}
 			}
+		console.log("highscore:"+highScore);
 		return result;
 	}
 	var topChar = findHighScore();
 	document.getElementById("userResult").innerHTML = (topChar.name +"! "+topChar.description   
-	/*+ " mowgli: "+charData[0].score +", kaa: "+charData[1].score+", shere khan: "+charData[2].score+", bagheera: "+charData[3].score+", baloo: "+charData[4].score+", colonel Hathi: "+charData[5].score+", and king louie: "+charData[6].score*/
-	)		
+	+ " mowgli: "+charData[0].score +", kaa: "+charData[1].score+", shere khan: "+charData[2].score+", bagheera: "+charData[3].score+", baloo: "+charData[4].score+", colonel Hathi: "+charData[5].score+", and king louie: "+charData[6].score
+	);		
 }
 
 
