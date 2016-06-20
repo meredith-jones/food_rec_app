@@ -12,23 +12,19 @@ router.get('/quiz', function(req, res, next) {
   res.sendFile(path.join(__dirname+'/../views/quiz.html'));
 });
 
-router.get('/dog/', function(req, res) {
-   
-});
-
 router.get('/testme/', function(req, res, next) {
 
 	var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.598748,-122.388726&radius=1000&keyword="+req.query.queryparam+"&key=AIzaSyBURdJOkG62jXYReG_GIyHwOvWo9YIxG28";
 	https.get(url, function (response) {
 	    // data is streamed in chunks from the server
-	    // so we have to handle the "data" event    
-	    var buffer = "", 
+	    // so we have to handle the "data" event
+	    var buffer = "",
 	        data,
 	        route;
 
 	    response.on("data", function (chunk) {
 	        buffer += chunk;
-	    }); 
+	    });
 
 	    response.on("end", function (err) {
 	        // finished transferring data
@@ -36,14 +32,14 @@ router.get('/testme/', function(req, res, next) {
 	        //console.log(buffer);
 	        console.log("got buffer \n");
 	        data = JSON.parse(buffer);
-	       
+
 
 	        // extract the distance and time
 	       // console.log("Walking Distance: " + route.legs[0].distance.text);
 	       // console.log("Time: " + route.legs[0].duration.text);
         	res.send(buffer);
-	    }); 
-	}); 
+	    });
+	});
 
 
 });
